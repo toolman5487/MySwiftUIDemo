@@ -8,16 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectionId = 0
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView(selection: $selectionId) {
+            CalculatorView()
+                .tabItem {
+                    Image(systemName: "arrowshape.left.circle.fill")
+                    Text("計算機")
+                }
+                .tag(0)
+            MyResumeView()
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("首頁")
+                }
+                .tag(1)
+            FunctionPage()
+                .tabItem {
+                    Image(systemName: "arrowshape.right.circle.fill")
+                    Text("功能")
+                }
+                .tag(2)
         }
-        .padding()
     }
 }
+
+
+
 
 #Preview {
     ContentView()
